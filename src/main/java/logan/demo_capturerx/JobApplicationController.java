@@ -39,7 +39,12 @@ public class JobApplicationController {
     //Subscribing
     consumer.subscribe(Collections.singleton(topic));
     */
+    @GetMapping("/getall")
+    public List<JobApplicationEntity> getAllEmployee(){
+        List<JobApplicationEntity> allJoblist = jobApplicationRepository.findAll();
+        return allJoblist;
 
+    }
     @GetMapping("/job")
 	public JobApplicationEntity getjobApplicationbyId(@RequestParam(value = "id", defaultValue = "1") Integer jobApplicationId){
 		JobApplicationEntity jobApplicationEntity = jobApplicationRepository.findById(jobApplicationId).get();
